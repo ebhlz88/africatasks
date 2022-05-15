@@ -1,7 +1,7 @@
 Install python 
 
 In CMD
-pip install venv
+pip install virtualenv
 python -m venv envname(your choice)
 Activate Python envirnoment -- envirnome folder>scripts(folder in envirmonent) copy the path of script folder
 paste in CMD then /activate.bat
