@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+
+{% block content %} 
+{% load widget_tweaks %}    
+
+<!--Register--> 
+<div class="container py-5">
+	<h1>Register</h1>
+	<form method="POST">
+		{% csrf_token %}
+		<!-- {{ form.register_form }}   -->
+		{% render_field register_form.email class="form-control" placeholder="email" %}
+		{% render_field register_form.username class="form-control" placeholder="User Name" %}
+		  {% render_field register_form.password1 class="form-control" placeholder="Password" %}
+		  {% render_field register_form.password2 class="form-control" placeholder="Confirm Password" %}              
+		<button class="btn btn-primary" type="submit">Register</button>
+	</form>
+	<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+</div>
+
+{% endblock %}

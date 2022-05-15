@@ -1,0 +1,429 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block css %}
+{% endblock %}
+{% block content %}
+<div class="container my-5">
+
+    <h4>Account</h4>
+    <hr>
+
+    <!-- Content -->
+    <div class="row">
+
+        <div class="col-lg-3">
+
+            <div class="bg-primary text-white p-2 mb-3 d-lg-none d-sm-block rounded">
+                <button class="btn btn-primary" onclick="$('#accountNavbar').toggleClass('d-none');">
+                    <i class="fa fa-navicon"></i>
+                </button>
+            </div>
+
+
+            <div class="d-none d-lg-block  mb-3" id="accountNavbar">
+                <ul class="list-group small">
+                    <li class="list-group-item list-group-item-primary font-weight-bold">
+                        <a href="#globalItems" data-toggle="collapse"><i class="fa fa-globe"></i> Global</a>
+                    </li>
+                    <div class="collapse show" id="globalItems" style="padding:14px 29px;">
+                        <li class="list-group-item" style="background:black;"><a
+                                href="index.php?view=account&amp;page=summary"
+                                style="color:white; font-weight: bold;">Dashboard</a></li>
+                        <li class="list-group-item" style="background:green;"><a
+                                href="index.php?view=account&amp;page=messages"
+                                style="color:white; font-weight: bold;">Friend's Chat (0)</a></li>
+                        <li class="list-group-item" style="background:purple;"><a
+                                href="index.php?view=account&amp;page=addfunds"
+                                style="color:white; font-weight: bold;">Deposit</a></li>
+                        <li class="list-group-item" style="background:orange;"><a
+                                href="index.php?view=account&amp;page=upgrade"
+                                style="color:black; font-weight: bold;">Membership Plans</a></li>
+                        <li class="list-group-item" style="background:aquamarine;"><a
+                                href="index.php?view=account&amp;page=withdraw"
+                                style="color:black; font-weight: bold;">Withdraw</a></li>
+                        <li class="list-group-item" style="background:blue;"><a
+                                href="index.php?view=account&amp;page=banners"
+                                style="color:white; font-weight: bold;">Your Referral Link</a></li>
+                    </div>
+
+                    <li class="list-group-item list-group-item-primary font-weight-bold">
+                        <a href="#settingsItems" data-toggle="collapse"><i class="fa fa-cogs"></i> Settings</a>
+                    </li>
+                    <div class="collapse" id="settingsItems">
+                        <li class="list-group-item"><a href="index.php?view=account&amp;page=settings">Personal
+                                Settings</a></li>
+                        <li class="list-group-item"><a href="/?view=account&amp;page=two_factor">Two Factor
+                                Authentication</a></li>
+                        <li class="list-group-item"><a href="index.php?view=account&amp;page=forum_settings">Forum
+                                Settings</a></li>
+                        <li class="list-group-item"><a href="index.php?view=account&amp;page=manageads">Advertiser
+                                Panel</a></li>
+                    </div>
+
+                    <li class="list-group-item list-group-item-primary font-weight-bold">
+                        <a href="#referralItems" data-toggle="collapse"><i class="fa fa-users"></i> Referrals</a>
+                    </li>
+                    <div class="collapse" id="referralItems">
+                        <li class="list-group-item"><a href="index.php?view=account&amp;page=referrals">Direct
+                                Referrals</a></li>
+                        <li class="list-group-item"><a href="index.php?view=account&amp;page=rented_referrals">Rented
+                                Referrals</a></li>
+                        <li class="list-group-item"><a href="index.php?view=account&amp;page=rentreferrals">Rent
+                                Referrals</a></li>
+
+                        <li class="list-group-item"><a href="index.php?view=account&amp;page=buyreferrals">Buy
+                                Referrals</a></li>
+                    </div>
+
+                    <li class="list-group-item list-group-item-primary font-weight-bold">
+                        <a href="#logsItems" data-toggle="collapse"><i class="fa fa-files-o"></i> Logs</a>
+                    </li>
+                    <div id="logsItems" class="collapse">
+                        <li class="list-group-item"><a href="index.php?view=account&amp;page=ptsu_history">PTSU
+                                History</a></li>
+                        <li class="list-group-item"><a href="index.php?view=account&amp;page=history">Order History</a>
+                        </li>
+                        <li class="list-group-item"><a href="index.php?view=account&amp;page=deposit_history">Deposit
+                                History</a></li>
+                        <li class="list-group-item"><a href="index.php?view=account&amp;page=withdraw_history">Withdraw
+                                History</a></li>
+                        <li class="list-group-item"><a href="index.php?view=account&amp;page=login">Login History</a>
+                        </li>
+
+                    </div>
+
+                    <li class="list-group-item list-group-item-primary font-weight-bold">
+                        <a href="#otherItems" data-toggle="collapse"><i class="fa fa-calculator"></i> Other</a>
+                    </li>
+                    <div id="otherItems" class="collapse">
+                        <li class="list-group-item"><a href="index.php?view=account&amp;page=profitcalculator">Profit
+                                Calculator</a></li>
+                    </div>
+
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="col">
+            <div class="card mb-3">
+                <div class="card-header">Dashboard</div>
+
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <div class="float-left mr-3 mt-4">
+                                <h1><i class="fa fa-briefcase fa-lg fa-3x"></i></h1>
+                            </div>
+                            <div class="float-left">
+                                <h5 class="font-weight-bold">{{user}}</h5>
+                                <div class="small">Member Since: May 12th, 2022</div>
+                                <div class="small">Membership: Welcome</div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col-lg-3 d-none d-lg-block">
+                            <div class="card p-0">
+                                <div class="card-body text-center">
+                                    <div class="small">Saturday</div>
+                                    <h2 class="m-0">14</h2>
+                                </div>
+                                <div class="card-footer text-center small">May</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <a href="https://africatasks.com/index.php?view=account&amp;page=upgrade" class="btn btn-success ">Choose a
+                Plan</a>
+            <a href="https://africatasks.com/index.php?view=account&amp;page=addfunds" class="btn btn-info ">Deposit</a>
+            <!---  <h3 style="color:red;">Deposits are closed for today. Thanks!</h3>
+    ---->
+
+
+
+            <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-pills" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="general-tab" data-toggle="tab" href="#general-content"
+                                role="tab" aria-controls="general-content" aria-selected="true">General Stats</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="advertiser-tab" data-toggle="tab" href="#advertiser-content"
+                                role="tab" aria-controls="advertiser-content" aria-selected="false">Advertiser Stats</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="charts-tab" data-toggle="tab" href="#charts-content" role="tab"
+                                aria-controls="charts-content" aria-selected="false">Charts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="logs-tab" data-toggle="tab" href="#logs-content" role="tab"
+                                aria-controls="logs-content" aria-selected="false">Login Failures</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content" id="myTabContent">
+                        <!-- General -->
+                        <div class="tab-pane fade show active" id="general-content" role="tabpanel"
+                            aria-labelledby="general-tab">
+                            <div class="card mb-3">
+                                <div class="card-header bg-secondary text-white">Earning Balance Stats</div>
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td width="200"><strong>Balance</strong></td>
+                                                <td><strong>XAF60.00</strong></td>
+                                                <td align="right"><a href="/?view=account&amp;page=withdraw">[ Withdraw
+                                                        ]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Purchase balance</strong></td>
+                                                <td><strong>XAF0.00</strong></td>
+                                                <td align="right"><a href="/?view=account&amp;page=addfunds">[ Add funds
+                                                        ]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Pending Withdrawls</strong></td>
+                                                <td>XAF0.00</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Payments Received</strong></td>
+                                                <td>XAF0.00</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Points</strong> </td>
+                                                <td>0.00 pts</td>
+                                                <td align="right"><a href="/?view=account&amp;page=convert_points">[
+                                                        Convert points ]</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="card mb-3">
+                                <div class="card-header bg-secondary text-white">Referral Stats</div>
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td width="200"><strong>Direct Referrals</strong></td>
+                                                <td>0</td>
+                                                <td align="right"><a href="/?view=account&amp;page=buyreferrals">[ Buy
+                                                        Referrals ]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="200"><strong>Rented Referrals</strong></td>
+                                                <td>0</td>
+                                                <td align="right"><a href="/?view=account&amp;page=rentreferrals">[ Rent
+                                                        Referrals ]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="200"><strong>Earned so far</strong></td>
+                                                <td>0.0000</td>
+                                                <td align="right"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="card mb-3">
+                                <div class="card-header bg-secondary text-white">
+                                    Your advertisement clicks
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td width="200"><strong>Your clicks</strong></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Your referral clicks</strong></td>
+                                                <td>0</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card mb-3">
+                                <div class="card-header bg-secondary text-white">
+                                    Video Ads Stats
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td width="200"><strong>Total plays</strong></td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="200"><strong>Earned</strong></td>
+                                                <td>XAF0.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="200"><strong>Earned from referrals</strong></td>
+                                                <td>XAF0.00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/ General -->
+
+                        <!-- Advertiser -->
+                        <div class="tab-pane fade" id="advertiser-content" role="tabpanel"
+                            aria-labelledby="advertiser-tab">
+                            <div class="card">
+                                <div class="card-header bg-secondary text-white">
+                                    Advertising Balance Stats
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td width="200"><strong>Ad Credits</strong></td>
+                                                <td><strong>0</strong></td>
+                                                <td align="right"><a href="/?view=advertise">[ Buy credits ]</a> &nbsp;
+                                                    &nbsp; <a href="/?view=account&amp;page=manageads">[ Advertise ]</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="200"><strong>Video Ads Credits</strong></td>
+                                                <td><strong>0</strong></td>
+                                                <td align="right"><a href="/?view=advertise">[ Buy credits ]</a> &nbsp;
+                                                    &nbsp; <a
+                                                        href="/?view=account&amp;page=manageads&amp;module=video_ads">[
+                                                        Advertise ]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Login Ad Credits</strong></td>
+                                                <td>0</td>
+                                                <td align="right"><a href="/?view=advertise">[ Buy credits ]</a> &nbsp;
+                                                    &nbsp; <a
+                                                        href="/?view=account&amp;page=manageads&amp;module=login_ads">[
+                                                        Advertise ]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>PTSU Credits</strong></td>
+                                                <td>0</td>
+                                                <td align="right"><a href="/?view=advertise">[ Buy credits ]</a> &nbsp;
+                                                    &nbsp; <a href="/?view=account&amp;page=manageads&amp;module=ptsu">[
+                                                        Advertise ]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Banner Credits</strong></td>
+                                                <td>0</td>
+                                                <td align="right"><a href="/?view=advertise">[ Buy credits ]</a> &nbsp;
+                                                    &nbsp; <a
+                                                        href="/?view=account&amp;page=manageads&amp;module=banner_ads">[
+                                                        Advertise ]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Featured Ad Credits</strong></td>
+                                                <td>0</td>
+                                                <td align="right"><a href="/?view=advertise">[ Buy credits ]</a> &nbsp;
+                                                    &nbsp; <a
+                                                        href="/?view=account&amp;page=manageads&amp;module=text_ads">[
+                                                        Advertise ]</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Featured Link Credits</strong></td>
+                                                <td>0</td>
+                                                <td align="right"><a href="/?view=advertise">[ Buy credits ]</a> &nbsp;
+                                                    &nbsp; <a
+                                                        href="/?view=account&amp;page=manageads&amp;module=link_ads">[
+                                                        Advertise ]</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/ Advertiser -->
+
+                        <!-- Charts -->
+                        <div class="tab-pane fade" id="charts-content" role="tabpanel" aria-labelledby="charts-tab">
+                            <canvas id="myChart" height="0" style="display: block; width: 0px; height: 0px;"
+                                class="chartjs-render-monitor" width="0"></canvas>
+                            <canvas id="refChart" height="0" style="display: block; width: 0px; height: 0px;"
+                                class="chartjs-render-monitor" width="0"></canvas>
+                            <canvas id="rentedChart" height="0" style="display: block; width: 0px; height: 0px;"
+                                class="chartjs-render-monitor" width="0"></canvas>
+                            <canvas id="autopayChart" height="0" style="display: block; width: 0px; height: 0px;"
+                                class="chartjs-render-monitor" width="0"></canvas>
+                        </div>
+                        <!--/ Charts -->
+
+                        <!-- logs -->
+                        <div class="tab-pane fade" id="logs-content" role="tabpanel" aria-labelledby="logs-tab">
+                            No information available in this view
+                        </div>
+                        <!--/ logs -->
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                var days_data = ["May 08th", "May 09th", "May 10th", "May 11th", "May 12th", "Yesterday", "Today"];
+                var clicks_data = [0, 0, 0, 0, 0, 0, 0];
+                var ref_data = [0, 0, 0, 0, 0, 0, 0];
+                var lang_chart_1 = 'Your advertisement clicks';
+                var lang_chart_2 = 'Your direct referral clicks';
+                var rented_status = true;
+                var rented_data = [0, 0, 0, 0, 0, 0, 0];
+                var autopay_data = [0, 0, 0, 0, 0, 0, 0];
+                var lang_chart_3 = 'Your rented referral clicks';
+                var lang_chart_4 = 'Autopay Statistics';
+            </script>
+            <script type="text/javascript"
+                src="https://africatasks.com/assets/components/chartjs/Chart.bundle.min.js"></script>
+            <script type="text/javascript"
+                src="https://africatasks.com/assets/components/chartjs/evolutionChartLine.js"></script>
+            <script type="text/javascript" src="https://africatasks.com/assets/evolution/js/dashboard.js"></script>
+            <script type="text/javascript" src="https://africatasks.com/assets/evolution/js/security.php"></script>
+        </div>
+    </div>
+
+</div>
+<div class="container text-center mb-3">
+    <img src="https://africatasks.com/assets/evolution/images/gateway_home/10.gif" class="m-3">
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-4 order-lg-2">
+            <select class="custom-select mb-3" onchange="location.href='https://africatasks.com/?lang='+this.value;">
+                <option value="1" selected="">English (US)</option>
+            </select>
+        </div>
+        <div class="col-lg-8 order-lg-1">
+            <a href="index.php">Home</a> &nbsp; • &nbsp;
+            <a href="index.php?view=faq">FAQ</a> &nbsp; • &nbsp;
+            <a href="index.php?view=contact">Support</a>
+            &nbsp; • &nbsp; <a href="index.php?view=terms">Terms of Service</a>
+            &nbsp; • &nbsp; <a href="index.php?view=payment_proof">Proof of Payments</a>
+            &nbsp; • &nbsp; <a href="index.php?view=news">News</a>
+
+            &nbsp; • &nbsp; <a href="forum.php">Forum</a>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="border-top mt-3 py-3" style="font-size: 12px">
+        Copyright © 2022 AfricaTasks. All rights reserved. AfricaTasks
+    </div>
+</div>
+{% endblock %}
